@@ -1,12 +1,12 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
-const products = require('./routes/products')
+const Products = require('./routes/products');
 
 //express app
 
 const app = express();
 
-app.use('api/products',products)
+app.use('/api/products',Products)
 
 //routes
 
