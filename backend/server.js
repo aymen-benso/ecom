@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const Products = require('./routes/products');
+const Products = require('./Client/Backend/routes/products');
 
 //express app
 
