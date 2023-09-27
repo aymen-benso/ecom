@@ -1,19 +1,18 @@
-require('dotenv').config();
 const express = require('express');
-const Products = require('./Client/Backend/routes/products');
-
-//express app
-
+const path = require('path');
 const app = express();
+const port = process.env.PORT || 5000;
 
-app.use('/api/products',Products)
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-//routes
+// Define your API routes and other Express middleware here
 
-app.get("/",(req,res)=>{
-    res.json({mssg:'hello am aymen api lol'})
-})
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
-app.listen(process.env.PORT,()=>{
-    console.log('server run on port',process.env.PORT)
-})
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
